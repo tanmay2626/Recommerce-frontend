@@ -3,11 +3,14 @@ import Footer from "@/components/layout/Footer";
 import "@/styles/globals.scss";
 
 export default function App({ Component, pageProps }) {
+  const currComp = Component.getLayout;
+  if (currComp) {
+    return currComp(<Component {...pageProps} />);
+  }
   return (
     <>
       <Header />
       <Component {...pageProps} />
-      <Footer />
     </>
   );
 }

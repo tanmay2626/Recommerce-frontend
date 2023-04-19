@@ -1,9 +1,32 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+  position: relative;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background: url(/images/landing.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  animation: 2s ease-in 0s 1 comeAlive;
+
+  & > div{
+    position: absolute;
+    margin-top: 62vh;
+    margin-left: 50vw;
+  }
+
+  button {
+    background-color: black;
+    color: white;
+    font-size: 1.5rem;
+    padding: 15px 25px;
+    border-radius: 35px;
+    border: none;
+  }
+
+  .right{
+    margin-left: 2rem;
+  }
 }
+
+
 
