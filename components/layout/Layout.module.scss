@@ -1,0 +1,65 @@
+@import "@/styles/_config.scss";
+
+.header{
+    display: flex;
+    position: sticky;
+    top: 0;
+    height: $header_height;
+    padding: 1rem;
+    -webkit-box-shadow: 0 10px 10px -10px #000000;
+   -moz-box-shadow: 0 10px 10px -10px #000000;
+        box-shadow: 0 10px 10px -10px #000000;
+}
+
+.logo{
+    flex: 0.7;
+    display: flex;
+
+    & > img{
+        width: 140px;
+        
+    }
+}
+
+.buttons{
+    flex: 0.3;
+    display: flex;
+    justify-content: right;
+    
+    & > button{
+        width: fit-content;
+        padding: 10px 25px;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        background-color: $button_blue_color;
+        color: white;
+        border : none;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .header{
+        height: 2rem;
+        position: sticky;
+        top: 0;
+    }
+    .logo{
+
+        & > img{
+            width: 100px;
+        }
+    }
+
+    .buttons{
+        & > button{
+            font-size: 1rem;
+            padding: 1px 15px;
+        }
+    }
+}
+
+.footer{
+    text-align: center;
+    width: 100vw;
+    padding: 1rem 0px;
+}
