@@ -1,3 +1,5 @@
+import { Button } from "@mui/material";
+import GoogleIcon from "@mui/icons-material/Google";
 import React, { useState, useEffect } from "react";
 
 const clientId =
@@ -61,7 +63,20 @@ function GoogleAuth() {
       {isAuthenticated ? (
         <button onClick={handleLogoutClick}>Logout</button>
       ) : (
-        <button onClick={handleLoginClick}>Login with Google</button>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{
+            color: "white",
+            fontSize: 1 + "rem",
+            textTransform: "none",
+            backgroundColor: "black",
+            ":hover": { backgroundColor: "black" },
+          }}
+          startIcon={<GoogleIcon />}
+        >
+          Signin With Google
+        </Button>
       )}
     </div>
   );

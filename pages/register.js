@@ -5,7 +5,7 @@ import Link from "next/link";
 import GoogleAuth from "@/components/common/GoogleAuth";
 import Head from "next/head";
 
-const Login = (props) => {
+const Register = (props) => {
   return (
     <section className={styles.signin}>
       <div className={styles.signin_box}>
@@ -39,32 +39,13 @@ const Login = (props) => {
           <p>OR</p>
           <GoogleAuth />
         </div>
-        <Divider sx={{ marginTop: 2, fontSize: 0.9 + "rem", color: "gray" }}>
-          New to ScrapYar?
-        </Divider>
-        <Link className={styles.link} href="/register">
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              color: "black",
-              textTransform: "none",
-              width: 100 + "%",
-              backgroundColor: "#EEEEEE",
-              marginTop: 2,
-              ":hover": { backgroundColor: "#EFEFEF" },
-            }}
-          >
-            Create your ScrapYar account
-          </Button>
-        </Link>
       </div>
     </section>
   );
 };
 
-export default Login;
+export default Register;
 
-Login.getLayout = function PageLayout(page) {
+Register.getLayout = function PageLayout(page) {
   return <>{page}</>;
 };

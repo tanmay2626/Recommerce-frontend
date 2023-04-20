@@ -1,0 +1,65 @@
+
+.sell-box{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.sell-form{
+    background-color: white;
+    width:100%;
+    margin: 0 auto;
+    border: solid 1px #DDDDDD;
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+.sell-form span{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.form-wrap{
+    text-align: left;
+    padding: 10px;
+}
+
+.sell-form label{
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.sell-form input{
+    width: 95%;
+    height: 25px;
+    padding: 2px;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.brand-price{
+    display: flex;
+}
+
+.brand{
+    flex: 50;
+}
+
+.price{
+    flex: 50;
+}
+
+.sell-box textarea{
+    width: 100%;
+}
+
+
+@media (min-width: 1025px){
+
+    .sell-box{
+        width: 50%;
+    }
+}
