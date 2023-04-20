@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Layout.module.scss";
 import Search from "../common/Search";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Header = (props) => {
   const router = useRouter();
@@ -20,7 +21,10 @@ const Header = (props) => {
       </div>
       <div className={styles.buttons}>
         <Search />
-        <button>Login</button>
+
+        <button>
+          <Link href="/login">Login </Link>
+        </button>
       </div>
     </div>
   );
