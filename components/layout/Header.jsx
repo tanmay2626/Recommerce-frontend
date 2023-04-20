@@ -19,12 +19,13 @@ const Header = (props) => {
           <img src="/images/creative logo.svg" alt="logo" />
         )}
       </div>
-      <div className={styles.buttons}>
+      <div className={styles.features}>
         <Search />
-
-        <button>
-          <Link href="/login">Login </Link>
-        </button>
+        <div className={styles.login__button}>
+          <Link href="/login">
+            <button className={styles.right}>Login</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
