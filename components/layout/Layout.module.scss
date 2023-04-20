@@ -22,6 +22,7 @@
 
     .login__button{
         button{
+            height: 100%;
             width: fit-content;
             padding: 10px 25px;
             font-size: 1.2rem;
@@ -36,7 +37,7 @@
 
 @media only screen and (max-width: 767px){
     .header{
-        height: 2rem;
+        height: 2.5rem;
         position: sticky;
         top: 0;
     }

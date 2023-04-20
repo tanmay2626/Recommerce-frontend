@@ -53,5 +53,16 @@
   
 }
 
+@media only screen and (max-width: 768px) {
+  .landing{
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .graphics{
+    display: none;
+  }
+}
+
 
 

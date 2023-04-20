@@ -17,7 +17,7 @@ export default function Home() {
             <h2>Hi There!</h2>
             <h1>Start your journey with...</h1>
             <Link href="/creative-scrapyar">
-              <button className={styles.right}>Createive ScrapYar</button>
+              <button className={styles.right}>Creative ScrapYar</button>
             </Link>
             <Divider orientation="vertical" flexItem sx={{ fontSize: 15 }}>
               OR
