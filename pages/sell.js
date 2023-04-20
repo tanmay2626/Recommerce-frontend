@@ -1,80 +1,82 @@
 import React, { useState, useEffect } from "react";
 import styles from "@/styles/Sell.module.scss";
-import { Container } from "@mui/material";
 import { Button } from "@mui/material";
 
 const Sell = (props) => {
   return (
-    <Container className="sell">
-      <div className="sell-box">
-        <div className="sell-form">
-          <span>Start Selling!</span>
-          <div className="form-wrap">
-            <form>
-              <label>Title</label>
-              <input name="title" type="text" required />
-              <div className="brand-price">
-                <div className="price">
-                  <label>Price</label>
-                  <input name="price" type="number" required />
-                </div>
-                <div className="brand">
-                  <label>Brand</label>
-                  <input
-                    name="brand"
-                    placeholder="eg. Apple"
-                    type="text"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="brand-price">
-                <div className="brand">
-                  <label>Category</label>
-                  <br />
-                  <select name="category" required>
-                    <option value="Mobile">Mobile</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Cars">Cars</option>
-                    <option value="Furniture">Furniture</option>
-                  </select>
-                </div>
-                <div className="price">
-                  <label>Usage</label>
-                  <input
-                    name="usage"
-                    placeholder=" months / years / km"
-                    type="text"
-                    required
-                  />
-                </div>
-              </div>
-              <label>Description</label>
-              <br />
-              <textarea name="description" required />
-              <label>Photo ( .jpg/ .jpeg/ .png )</label>
-              <input type="file" accept="image/" name="img" />
-              <Button
-                variant="contained"
-                size="small"
-                type="submit"
-                sx={{
-                  color: "color",
-                  textTransform: "none",
-                  width: 100 + "%",
-                  backgroundColor: "#205E61",
-                  marginTop: 3,
-                  ":hover": { backgroundColor: "#205E61" },
-                }}
-              >
-                Upload
-              </Button>
-            </form>
+    <section className={styles.sell}>
+      <h2>Sell with ScrapYar!</h2>
+      <form>
+        <div className={styles.form_group}>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+
+        <div className={styles.form_group}>
+          <div className={styles.input_group}>
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" required />
+          </div>
+          <div className={styles.input_group}>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required />
           </div>
         </div>
-      </div>
-    </Container>
+
+        <div className={styles.form_group}>
+          <div className={styles.input_group}>
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+              <option value="">Select a category</option>
+              <option value="electronics">Electronics</option>
+              <option value="fashion">Fashion</option>
+              <option value="home">Home</option>
+              <option value="sports">Sports</option>
+            </select>
+          </div>
+          <div className={styles.input_group}>
+            <label for="usage">Usage:</label>
+            <input type="text" id="usage" name="usage" required />
+          </div>
+        </div>
+
+        <div className={styles.form_group}>
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+
+        <div className={styles.form_group}>
+          <label for="image">Image:</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <Button
+          variant="contained"
+          size="large"
+          type="submit"
+          sx={{
+            color: "white",
+            fontSize: 1 + "rem",
+            textTransform: "none",
+            backgroundColor: "black",
+            ":hover": { backgroundColor: "black" },
+          }}
+        >
+          Submit
+        </Button>
+      </form>
+    </section>
   );
 };
 
 export default Sell;
+
+Sell.getLayout = function PageLayout(page) {
+  return <>{page}</>;
+};

@@ -1,65 +1,76 @@
 
-.sell-box{
-    width: 100%;
+.sell{
+    width: 75%;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
-    margin: 0 auto;
-    margin-top: 100px;
-}
+    font-size: 1.5rem;
 
-.sell-form{
-    background-color: white;
-    width:100%;
-    margin: 0 auto;
-    border: solid 1px #DDDDDD;
-    padding: 15px;
-    font-size: 1.2rem;
-}
-
-.sell-form span{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-}
-
-.form-wrap{
-    text-align: left;
-    padding: 10px;
-}
-
-.sell-form label{
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.sell-form input{
-    width: 95%;
-    height: 25px;
-    padding: 2px;
-}
-
-.link{
-    text-decoration: none;
-}
-
-.brand-price{
-    display: flex;
-}
-
-.brand{
-    flex: 50;
-}
-
-.price{
-    flex: 50;
-}
-
-.sell-box textarea{
-    width: 100%;
-}
-
-
-@media (min-width: 1025px){
-
-    .sell-box{
-        width: 50%;
+    & > form { 
+        width: 55%;
+        margin: 0 auto;
+        text-align: left;
     }
 }
+
+.form_group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+
+    & > label {
+        display: block;
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+      }
+    
+  }
+  
+  .form_group .input_group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+
+    & >  label {
+        width: 35%;
+        margin-right: 10px;
+        text-align: left;
+        font-size: 1.2rem;
+      }
+  }
+  
+  
+  .form_group input[type="text"],
+  .form_group input[type="number"],
+  .form_group textarea,
+  .form_group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .input_group input[type="text"],
+  .form_group select{
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+
+    .sell{
+        width: 95%;
+        & > form {
+            width: 90%;
+        }
+    }
+  }
