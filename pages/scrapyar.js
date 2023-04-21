@@ -13,8 +13,9 @@ const Scrapyar = (props) => {
     "Mobile",
     "Laptop",
     "Electronic",
-    "Kitchen Aplliances",
     "Garden",
+    "Fashion",
+    "Sports",
     "Other",
   ];
   const [selected, setSelected] = useState("");

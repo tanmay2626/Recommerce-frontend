@@ -24,16 +24,17 @@ const OnScrapYar = (props) => {
             <input type="number" id="price" name="price" required />
           </div>
         </div>
-
         <div className={styles.form_group}>
           <div className={styles.input_group}>
             <label for="category">Category:</label>
             <select id="category" name="category" required>
               <option value="">Select a category</option>
-              <option value="electronics">Electronics</option>
-              <option value="fashion">Fashion</option>
-              <option value="home">Home</option>
+              <option value="car">Car</option>
+              <option value="mobile">Mobile</option>
+              <option value="garden">Garden</option>
               <option value="sports">Sports</option>
+              <option value="electronics">Electronics</option>
+              <option value="other">Other</option>
             </select>
           </div>
           <div className={styles.input_group}>

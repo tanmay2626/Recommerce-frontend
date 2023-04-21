@@ -24,16 +24,18 @@ const OnCreativeScrapYar = (props) => {
             <input type="number" id="price" name="price" required />
           </div>
         </div>
-
         <div className={styles.form_group}>
           <div className={styles.input_group}>
             <label for="category">Category:</label>
             <select id="category" name="category" required>
               <option value="">Select a category</option>
-              <option value="electronics">Electronics</option>
-              <option value="fashion">Fashion</option>
-              <option value="home">Home</option>
-              <option value="sports">Sports</option>
+              <option value="painting">Painting</option>
+              <option value="home">Home Decor</option>
+              <option value="jwelleries">Jwelleries</option>
+              <option value="accesories">Accessories</option>
+              <option value="lifestyyle-men">LifeStyle-Men</option>
+              <option value="lifestyle-women">LifeStyle-Women</option>
+              <option value="other">Other</option>
             </select>
           </div>
           <div className={styles.input_group}>
