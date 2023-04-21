@@ -4,7 +4,8 @@ import NativeSelect from "@mui/material/NativeSelect";
 import ProductCard from "@/components/Card/ProductCard";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { Divider } from "@mui/material";
+import { Divider, IconButton } from "@mui/material";
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 
 const Scrapyar = (props) => {
   const categories = [
@@ -94,6 +95,11 @@ const Scrapyar = (props) => {
           <ProductCard />
         </div>
       </section>
+      <div className={styles.sell}>
+        <IconButton sx={{ bgcolor: "#088395", p: 2 }}>
+          <AddAPhotoIcon sx={{ color: "white", fontSize: 25 }} />
+        </IconButton>
+      </div>
     </section>
   );
 };

@@ -4,6 +4,7 @@
     width: 90%;
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
+    position: relative;
 
     & > img{
         margin: 0 auto;
@@ -102,4 +103,17 @@
         gap: 40px;
         grid-template-columns: 1fr 1fr 1fr ;
     }
+}
+
+.sell{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 5px;
+    width: 80px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
 }
