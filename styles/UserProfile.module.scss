@@ -1,0 +1,30 @@
+
+.profile{
+    width: 50%;
+    margin: 20px auto;
+    font-family: 'Roboto', sans-serif;
+
+    & > img{
+        aspect-ratio: 4/4;
+        width: 150px;
+        border: 1px solid gray;
+        border-radius: 15px;
+    }
+
+    h1{
+        font-weight: 500;
+    }
+
+    h3{
+        font-weight: 400;
+    }
+}
+
+.address{
+    width: 350px;
+}
+
+.profile_section{
+    text-align: center;
+    padding: 20px;
+}

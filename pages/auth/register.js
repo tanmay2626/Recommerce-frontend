@@ -3,9 +3,7 @@ import styles from "@/styles/Auth.module.scss";
 import { Button, Divider } from "@mui/material";
 import Link from "next/link";
 import GoogleAuth from "@/components/common/GoogleAuth";
-import Head from "next/head";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 
 const Register = (props) => {
   return (
