@@ -32,7 +32,7 @@ const Header = (props) => {
                 color: "white",
                 fontSize: 1 + "rem",
                 textTransform: "none",
-                ":hover": { backgroundColor: "black" },
+                bgcolor: "#088395",
               }}
             >
               Login
