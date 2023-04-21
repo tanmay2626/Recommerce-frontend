@@ -3,6 +3,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { IconButton, Divider, Button } from "@mui/material";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import ProductCard from "@/components/Card/ProductCard";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 const Product = (props) => {
   return (
     <section className={styles.product_page}>
@@ -77,7 +80,7 @@ const Product = (props) => {
                 sx={{
                   fontSize: 1 + "rem",
                   textTransform: "none",
-                  backgroundColor: "black",
+                  backgroundColor: "#088395",
                 }}
               >
                 Proceed to Pay
@@ -110,9 +113,24 @@ const Product = (props) => {
       <Divider sx={{ mt: 2 }}>
         <h3>Related Products</h3>
       </Divider>
-      <div>hlle</div>
+      <div className={styles.related}>
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+      </div>
     </section>
   );
 };
 
 export default Product;
+
+Product.getLayout = function PageLayout(page) {
+  return (
+    <>
+      <Header />
+      {page}
+      <Footer />
+    </>
+  );
+};

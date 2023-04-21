@@ -102,3 +102,9 @@
 .product_price{
     font-size: 1.8rem;
 }
+
+.related{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 25px;
+}
