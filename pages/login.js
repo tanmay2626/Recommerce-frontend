@@ -3,7 +3,6 @@ import styles from "@/styles/Auth.module.scss";
 import { Button, Divider } from "@mui/material";
 import Link from "next/link";
 import GoogleAuth from "@/components/common/GoogleAuth";
-import Head from "next/head";
 
 const Login = (props) => {
   return (
