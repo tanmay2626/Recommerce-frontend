@@ -5,6 +5,8 @@
     top: 0;
     height: $header_height;
     padding: 1rem;
+    z-index: 1;
+    background-color: white;
     -webkit-box-shadow: 0 10px 10px -10px #000000;
    -moz-box-shadow: 0 10px 10px -10px #000000;
         box-shadow: 0 10px 10px -10px #000000;
@@ -58,6 +60,8 @@
 
 .footer{
     text-align: center;
-    width: 100vw;
+    width: 98vw;
     padding: 1rem 0px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 20px;
 }

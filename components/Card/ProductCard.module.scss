@@ -1,0 +1,66 @@
+.card {
+    height: 350px; /* adjust the height as needed */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .image_container {
+    position: relative;
+    height: 100%;
+  
+    & >  img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background-color: rgba(255, 255, 255, 0.671); /* white with 70% opacity */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-between;
+    padding: 15px;
+    box-sizing: border-box;
+    transition: height 0.5s ease-in-out;
+  }
+  
+  .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .price {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #088395;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.1);
+  }
+  
+  .card:hover .overlay {
+    height: 100%;
+    transition: height 0.5s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .card:hover .name, .card:hover .price {
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+  }
+  
