@@ -3,6 +3,8 @@ import styles from "@/styles/Auth.module.scss";
 import { Button, Divider } from "@mui/material";
 import Link from "next/link";
 import GoogleAuth from "@/components/common/GoogleAuth";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const Login = (props) => {
   return (
@@ -28,8 +30,7 @@ const Login = (props) => {
                 textTransform: "none",
                 width: 310 + "px",
                 mt: 2,
-                backgroundColor: "black",
-                ":hover": { backgroundColor: "black" },
+                backgroundColor: "#088395",
               }}
             >
               Submit
@@ -65,5 +66,10 @@ const Login = (props) => {
 export default Login;
 
 Login.getLayout = function PageLayout(page) {
-  return <>{page}</>;
+  return (
+    <>
+      <Header />
+      {page}
+    </>
+  );
 };

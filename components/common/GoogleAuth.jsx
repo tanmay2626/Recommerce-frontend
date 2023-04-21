@@ -70,8 +70,7 @@ function GoogleAuth() {
             color: "white",
             fontSize: 1 + "rem",
             textTransform: "none",
-            backgroundColor: "black",
-            ":hover": { backgroundColor: "black" },
+            backgroundColor: "#088395",
           }}
           startIcon={<GoogleIcon />}
         >

@@ -4,12 +4,14 @@ import { Button, Divider } from "@mui/material";
 import Link from "next/link";
 import GoogleAuth from "@/components/common/GoogleAuth";
 import Head from "next/head";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const Register = (props) => {
   return (
     <section className={styles.signin}>
       <div className={styles.signin_box}>
-        <span>Login</span>
+        <span>Register</span>
         <div className={styles.signin_form}>
           <form className={styles.form_wrap}>
             <label>Email</label>
@@ -29,7 +31,7 @@ const Register = (props) => {
                 textTransform: "none",
                 width: 310 + "px",
                 mt: 2,
-                backgroundColor: "black",
+                backgroundColor: "#088395",
                 ":hover": { backgroundColor: "black" },
               }}
             >
@@ -47,5 +49,10 @@ const Register = (props) => {
 export default Register;
 
 Register.getLayout = function PageLayout(page) {
-  return <>{page}</>;
+  return (
+    <>
+      <Header />
+      {page}
+    </>
+  );
 };
