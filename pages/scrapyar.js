@@ -9,12 +9,12 @@ import { Divider } from "@mui/material";
 const Scrapyar = (props) => {
   const categories = [
     "Car",
-    "Home Decor",
     "Mobile",
     "Laptop",
     "Electronic",
     "Kitchen Aplliances",
     "Garden",
+    "Other",
   ];
   const [selected, setSelected] = useState("");
 
