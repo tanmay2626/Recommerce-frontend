@@ -13,6 +13,10 @@ const OnScrapYar = (props) => {
           <label for="title">Title:</label>
           <input type="text" id="title" name="title" required />
         </div>
+        <div className={styles.form_group}>
+          <label for="tagline">Tagline:</label>
+          <input type="text" id="tagline" name="tagline" required />
+        </div>
 
         <div className={styles.form_group}>
           <div className={styles.input_group}>

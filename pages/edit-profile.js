@@ -17,6 +17,10 @@ const Login = (props) => {
             <br />
             <label>Name</label>
             <br />
+            <label>Mobile Number</label>
+            <br />
+            <input name="mobile" type="tel" />
+            <br />
             <input name="name" type="text" />
             <label for="description">Address</label>
             <br />
