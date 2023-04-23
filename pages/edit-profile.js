@@ -3,8 +3,10 @@ import styles from "@/styles/Auth.module.scss";
 import { Button } from "@mui/material";
 import Header from "@/components/layout/Header";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Edit = (props) => {
+  const router = useRouter();
   const [userData, setUserData] = useState({
     username: "",
     name: "",
@@ -32,7 +34,7 @@ const Edit = (props) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        router.push("/profile");
       })
       .catch((error) => {
         console.log(error);

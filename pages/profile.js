@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/UserProfile.module.scss";
 import { Divider } from "@mui/material";
+import axios from "axios";
 
 const Profile = (props) => {
+  const [profile, setProfile] = useState(null);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("http://localhost:8080/api/user/user", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setProfile(res.data.user.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <section className={styles.profile}>
       <img src="/images/profile.gif" alt="profile" />
       <div className={styles.details}>
-        <h3>@twaykar8 &#8226; tanmaywaykar17@gmail.com</h3>
+        <h3>
+          @{profile.username} &#8226; {profile.email}
+        </h3>
       </div>
-      <div className={styles.address}>
-        Flat-46, Plot-71, Shri Samarth Housing Society, Near Mahabali Mandir,
-        Shahunagar, Chinchwad, Pune, 411019
-      </div>
+      <div className={styles.address}>{profile.address}</div>
       <h1>My views</h1>
       <Divider />
       <div className={styles.profile_section}>No Views yet</div>
