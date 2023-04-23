@@ -3,6 +3,10 @@
     width: 300px;
     margin: -50px auto;
     font-family: 'Roboto', sans-serif;
+
+    & > p{
+        color : red
+    }
 }
 
 

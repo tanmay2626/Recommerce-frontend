@@ -4,18 +4,12 @@ import Search from "../common/Search";
 import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 
-const Header = (props) => {
-  const [current, setCurrent] = useState("scrapyar");
+const Header = ({ current }) => {
   const router = useRouter();
 
   const redirectToLogin = () => {
     router.push("/auth/login");
   };
-
-  useEffect(() => {
-    const currentSite = localStorage.getItem("current");
-    setCurrent(currentSite);
-  });
 
   return (
     <div className={styles.header}>

@@ -2,9 +2,7 @@ import Header from "@/components/layout/Header";
 import styles from "@/styles/Home.module.scss";
 import { Divider } from "@mui/material";
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 
 export default function Home() {
   const router = useRouter();
@@ -20,6 +18,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <script src="https://accounts.google.com/gsi/client"></script>
+      </Head>
       <main className={styles.main}>
         <section className={styles.landing}>
           <div className={styles.graphics}>

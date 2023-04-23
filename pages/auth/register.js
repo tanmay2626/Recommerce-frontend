@@ -1,11 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/Auth.module.scss";
-import { Button, Divider } from "@mui/material";
-import Link from "next/link";
+import { Button } from "@mui/material";
 import GoogleAuth from "@/components/common/GoogleAuth";
 import Header from "@/components/layout/Header";
+import axios from "axios";
+import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Register = (props) => {
+  const [error, setError] = useState(null);
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setCredentials((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const Register = (e) => {
+    e.preventDefault();
+    const email = credentials.email;
+    const password = credentials.password;
+
+    axios
+      .post(`http://localhost:8080/api/user/register`, {
+        email,
+        password,
+      })
+      .then((res) => {
+        router.push("/auth/login");
+      })
+      .catch((error) => {
+        if (error.response.status === 400) {
+          setError(error.response.data.message);
+          console.log(error.response.data.message);
+        } else {
+          console.log(error);
+        }
+      });
+  };
   return (
     <section className={styles.signin}>
       <div className={styles.signin_box}>
@@ -14,15 +54,20 @@ const Register = (props) => {
           <form className={styles.form_wrap}>
             <label>Email</label>
             <br />
-            <input name="email" type="email" />
+            <input name="email" type="email" onChange={handleChange} />
             <br />
             <label>Password</label>
             <br />
-            <input name="password" type="password" />
+            <input name="password" type="password" onChange={handleChange} />
+            {error && (
+              <div className="error">
+                <p>{error}</p>
+              </div>
+            )}
             <Button
+              onClick={Register}
               variant="contained"
               size="large"
-              type="submit"
               sx={{
                 color: "white",
                 fontSize: 1 + "rem",
@@ -49,6 +94,9 @@ export default Register;
 Register.getLayout = function PageLayout(page) {
   return (
     <>
+      <Head>
+        <script src="https://accounts.google.com/gsi/client"></script>
+      </Head>
       <Header />
       {page}
     </>
