@@ -1,43 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Layout.module.scss";
 import Search from "../common/Search";
 import { useRouter } from "next/router";
 import { Button } from "@mui/material";
-import Link from "next/link";
 
 const Header = (props) => {
+  const [current, setCurrent] = useState("scrapyar");
   const router = useRouter();
 
-  console.log(router.asPath);
+  const redirectToLogin = () => {
+    router.push("/auth/login");
+  };
 
-  const logo = router.asPath === "/scrapyar" ? "logo" : "creative logo";
+  useEffect(() => {
+    const currentSite = localStorage.getItem("current");
+    setCurrent(currentSite);
+  });
+
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        {router.asPath === "/scrapyar" ? (
-          <img src="/images/logo.svg" alt="logo" className={styles.scrapyar} />
-        ) : (
+        {current === "creative" ? (
           <img src="/images/creative logo.svg" alt="logo" />
+        ) : (
+          <img src="/images/logo.svg" alt="logo" className={styles.scrapyar} />
         )}
       </div>
       <div className={styles.features}>
         <Search />
         <div className={styles.login__button}>
-          <Link href="/login">
-            <Button
-              variant="contained"
-              size="large"
-              type="submit"
-              sx={{
-                color: "white",
-                fontSize: 1 + "rem",
-                textTransform: "none",
-                bgcolor: "#088395",
-              }}
-            >
-              Login
-            </Button>
-          </Link>
+          <Button
+            onClick={redirectToLogin}
+            variant="contained"
+            size="large"
+            type="submit"
+            sx={{
+              color: "white",
+              fontSize: 1 + "rem",
+              textTransform: "none",
+              bgcolor: "#088395",
+            }}
+          >
+            Login
+          </Button>
         </div>
       </div>
     </div>
