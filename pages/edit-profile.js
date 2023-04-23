@@ -1,11 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/Auth.module.scss";
 import { Button } from "@mui/material";
-import Link from "next/link";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import axios from "axios";
 
-const Login = (props) => {
+const Edit = (props) => {
+  const [userData, setUserData] = useState({
+    username: "",
+    name: "",
+    mobile: 0,
+    address: "",
+    city: "",
+    pincode: 0,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const updateProfile = (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+    axios
+      .put("http://localhost:8080/api/user/updateUser", userData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <section className={styles.signin}>
       <div className={styles.signin_box}>
@@ -13,34 +45,34 @@ const Login = (props) => {
           <form className={styles.form_wrap}>
             <label>Username</label>
             <br />
-            <input name="username" type="text" />
+            <input onChange={handleChange} name="username" type="text" />
             <br />
             <label>Name</label>
             <br />
+            <input onChange={handleChange} name="name" type="text" />
             <label>Mobile Number</label>
             <br />
-            <input name="mobile" type="tel" />
+            <input onChange={handleChange} name="mobile" type="tel" />
             <br />
-            <input name="name" type="text" />
-            <label for="description">Address</label>
+            <label>Address</label>
             <br />
-            <textarea id="description" name="description" required></textarea>
+            <textarea onChange={handleChange} name="address"></textarea>
             <div className={styles.address_details}>
               <div>
                 <label>City</label>
                 <br />
-                <input name="city" type="text" />
+                <input onChange={handleChange} name="city" type="text" />
               </div>
               <div>
                 <label>Pin Code</label>
                 <br />
-                <input name="pincode" type="text" />
+                <input onChange={handleChange} name="pincode" type="tel" />
               </div>
             </div>
             <Button
               variant="contained"
               size="large"
-              type="submit"
+              onClick={updateProfile}
               sx={{
                 color: "white",
                 fontSize: 1 + "rem",
@@ -59,9 +91,9 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Edit;
 
-Login.getLayout = function PageLayout(page) {
+Edit.getLayout = function PageLayout(page) {
   return (
     <>
       <Header />
