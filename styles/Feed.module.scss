@@ -56,16 +56,7 @@
 
         .range{
             display: flex;
-
-            & > div:nth-child(1){
-                flex: 0.5;
-                text-align: left;
-            }
-
-            & > div:nth-child(2){
-                flex: 0.5;
-                text-align: right;
-            }
+            justify-content: center;
         }
 
         & > div{

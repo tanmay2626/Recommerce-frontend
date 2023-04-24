@@ -15,17 +15,20 @@ const Product = (props) => {
   const [related, setRelated] = useState([]);
   const router = useRouter();
   const { id } = router.query;
+  console.log(id);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/getScrapyar/${id}`)
-      .then((res) => {
-        setProduct(res.data.product);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    if (id) {
+      axios
+        .get(`http://localhost:8080/api/getScrapyar/${id}`)
+        .then((res) => {
+          setProduct(res.data.product);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [id]);
   return (
     <section className={styles.product_page}>
       <p>Home / Creative Scrapyar / Product</p>
@@ -51,7 +54,7 @@ const Product = (props) => {
           <h1 className={styles.product_tagline}>{product?.tagline}</h1>
           <Divider />
           <h1 className={styles.product_price}>
-            ₹ {product?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            ₹ {product?.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </h1>
           <p className={styles.product_description}>{product?.description}</p>
           <Divider />

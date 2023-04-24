@@ -25,7 +25,7 @@ const Product = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
   return (
     <section className={styles.product_page}>
       <p>Home / Creative Scrapyar / Product</p>
@@ -51,7 +51,7 @@ const Product = (props) => {
           <h1 className={styles.product_tagline}>{product?.tagline}</h1>
           <Divider />
           <h1 className={styles.product_price}>
-            ₹ {product?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            ₹ {product?.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </h1>
           <p className={styles.product_description}>{product?.description}</p>
           <Divider />

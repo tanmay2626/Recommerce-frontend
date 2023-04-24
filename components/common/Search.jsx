@@ -3,9 +3,19 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import { useStateValue } from "@/libs/StateProvider";
+import Header from "@/components/layout/Header";
 
 const Search = () => {
   // eslint-disable-next-line no-empty-pattern
+  const [{}, dispatch] = useStateValue();
+
+  const handleChange = (e) => {
+    dispatch({
+      type: "SET_SEARCH",
+      item: e.target.value,
+    });
+  };
 
   return (
     <Paper
@@ -28,6 +38,7 @@ const Search = () => {
           p: "5px",
         }}
         placeholder="Search"
+        onChange={handleChange}
         inputProps={{ "aria-label": "search items" }}
       />
       <IconButton type="button" sx={{ p: "2px" }} aria-label="search">
