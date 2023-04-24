@@ -4,8 +4,9 @@ import Search from "../common/Search";
 import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 
-const Header = ({ current }) => {
+const Header = () => {
   const [token, setToken] = useState(false);
+  const [site, setSite] = useState(false);
   const router = useRouter();
 
   const redirectToLogin = () => {
@@ -19,12 +20,19 @@ const Header = ({ current }) => {
   useEffect(() => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("token")) {
       setToken(true);
+    } else {
+      setToken(false);
     }
-  }, []);
+    if (typeof localStorage !== "undefined") {
+      if (localStorage.getItem("current") === "creative") setSite(true);
+    } else {
+      setSite(false);
+    }
+  }, [token, site]);
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        {current === "creative" ? (
+        {site ? (
           <img src="/images/creative logo.svg" alt="logo" />
         ) : (
           <img src="/images/logo.svg" alt="logo" className={styles.scrapyar} />
@@ -35,6 +43,7 @@ const Header = ({ current }) => {
         <div className={styles.login__button}>
           {token ? (
             <img
+              onClick={redirectToProfile}
               className={styles.profile_img}
               src="/images/profile.gif"
               alt="profile"
