@@ -47,45 +47,48 @@ const Register = (props) => {
       });
   };
   return (
-    <section className={styles.signin}>
-      <div className={styles.signin_box}>
-        <span>Register</span>
-        <div className={styles.signin_form}>
-          <form className={styles.form_wrap}>
-            <label>Email</label>
-            <br />
-            <input name="email" type="email" onChange={handleChange} />
-            <br />
-            <label>Password</label>
-            <br />
-            <input name="password" type="password" onChange={handleChange} />
-            {error && (
-              <div className="error">
-                <p>{error}</p>
-              </div>
-            )}
-            <Button
-              onClick={Register}
-              variant="contained"
-              size="large"
-              sx={{
-                color: "white",
-                fontSize: 1 + "rem",
-                textTransform: "none",
-                width: 310 + "px",
-                mt: 2,
-                backgroundColor: "#088395",
-                ":hover": { backgroundColor: "black" },
-              }}
-            >
-              Submit
-            </Button>
-          </form>
-          <p>OR</p>
-          <GoogleAuth />
+    <>
+      <Header />
+      <section className={styles.signin}>
+        <div className={styles.signin_box}>
+          <span>Register</span>
+          <div className={styles.signin_form}>
+            <form className={styles.form_wrap}>
+              <label>Email</label>
+              <br />
+              <input name="email" type="email" onChange={handleChange} />
+              <br />
+              <label>Password</label>
+              <br />
+              <input name="password" type="password" onChange={handleChange} />
+              {error && (
+                <div className="error">
+                  <p>{error}</p>
+                </div>
+              )}
+              <Button
+                onClick={Register}
+                variant="contained"
+                size="large"
+                sx={{
+                  color: "white",
+                  fontSize: 1 + "rem",
+                  textTransform: "none",
+                  width: 310 + "px",
+                  mt: 2,
+                  backgroundColor: "#088395",
+                  ":hover": { backgroundColor: "black" },
+                }}
+              >
+                Submit
+              </Button>
+            </form>
+            <p>OR</p>
+            <GoogleAuth />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
@@ -97,7 +100,6 @@ Register.getLayout = function PageLayout(page) {
       <Head>
         <script src="https://accounts.google.com/gsi/client"></script>
       </Head>
-      <Header />
       {page}
     </>
   );

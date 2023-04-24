@@ -167,7 +167,7 @@ const CreativeScrapyar = (props) => {
                   <div
                     key={index}
                     onClick={() => {
-                      router.push(`/scrapyar/${product._id}`);
+                      router.push(`/creative-scrapyar/${product._id}`);
                     }}
                   >
                     <ProductCard
@@ -192,17 +192,9 @@ const CreativeScrapyar = (props) => {
           </Link>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
 
 export default CreativeScrapyar;
-
-CreativeScrapyar.getLayout = function PageLayout(page) {
-  return (
-    <>
-      {page}
-      <Footer />
-    </>
-  );
-};

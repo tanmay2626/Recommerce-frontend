@@ -192,6 +192,7 @@ const Scrapyar = (props) => {
           </Link>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

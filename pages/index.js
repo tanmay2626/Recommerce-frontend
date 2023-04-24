@@ -21,6 +21,7 @@ export default function Home() {
       <Head>
         <script src="https://accounts.google.com/gsi/client"></script>
       </Head>
+      <Header />
       <main className={styles.main}>
         <section className={styles.landing}>
           <div className={styles.graphics}>
@@ -42,12 +43,3 @@ export default function Home() {
     </>
   );
 }
-
-Home.getLayout = function PageLayout(page) {
-  return (
-    <>
-      <Header />
-      {page}
-    </>
-  );
-};

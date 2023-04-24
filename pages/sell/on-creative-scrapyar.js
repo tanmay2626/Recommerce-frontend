@@ -71,131 +71,125 @@ const OnCreativeScrapYar = (props) => {
       });
   };
   return (
-    <section className={styles.sell}>
-      <h2>Sell with Creative-ScrapYar!</h2>
-      <form>
-        <div className={styles.form_group}>
-          <label for="title">Title:</label>
-          <input
-            onChange={handleInputChange}
-            type="text"
-            id="title"
-            name="title"
-            required
-          />
-        </div>
-        <div className={styles.form_group}>
-          <label for="tagline">Tagline:</label>
-          <input
-            onChange={handleInputChange}
-            type="text"
-            id="tagline"
-            name="tagline"
-            required
-          />
-        </div>
-
-        <div className={styles.form_group}>
-          <div className={styles.input_group}>
-            <label for="brand">Brand:</label>
-            <input
-              onChange={handleInputChange}
-              type="text"
-              id="brand"
-              name="brand"
-              required
-            />
-          </div>
-          <div className={styles.input_group}>
-            <label for="price">Price:</label>
-            <input
-              onChange={handleInputChange}
-              type="number"
-              id="price"
-              name="price"
-              required
-            />
-          </div>
-        </div>
-        <div className={styles.form_group}>
-          <div className={styles.input_group}>
-            <label for="category">Category:</label>
-            <select
-              onChange={handleInputChange}
-              id="category"
-              name="category"
-              required
-            >
-              <option value="">Select a category</option>
-              <option value="Painting">Painting</option>
-              <option value="Home Decor">Home Decor</option>
-              <option value="Jwelleries">Jwelleries</option>
-              <option value="Accesories">Accessories</option>
-              <option value="Lifestyyle-Men">LifeStyle-Men</option>
-              <option value="Lifestyle-Women">LifeStyle-Women</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div className={styles.input_group}>
-            <label for="usage">Usage:</label>
-            <input
-              onChange={handleInputChange}
-              type="text"
-              id="usage"
-              name="usage"
-              required
-            />
-          </div>
-        </div>
-
-        <div className={styles.form_group}>
-          <label for="description">Description:</label>
-          <textarea
-            onChange={handleInputChange}
-            id="description"
-            name="description"
-            required
-          ></textarea>
-        </div>
-
-        <div className={styles.form_group}>
-          <label for="image">Image:</label>
-          <input
-            onChange={handleFileChange}
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            required
-          />
-        </div>
-
-        <Button
-          variant="contained"
-          size="large"
-          onClick={handleUpload}
-          sx={{
-            color: "white",
-            fontSize: 1 + "rem",
-            textTransform: "none",
-            backgroundColor: "#088395",
-          }}
-        >
-          Submit
-        </Button>
-      </form>
-    </section>
-  );
-};
-
-export default OnCreativeScrapYar;
-
-OnCreativeScrapYar.getLayout = function PageLayout(page) {
-  return (
     <>
       <Header />
-      {page}
+      <section className={styles.sell}>
+        <h2>Sell with Creative-ScrapYar!</h2>
+        <form>
+          <div className={styles.form_group}>
+            <label for="title">Title:</label>
+            <input
+              onChange={handleInputChange}
+              type="text"
+              id="title"
+              name="title"
+              required
+            />
+          </div>
+          <div className={styles.form_group}>
+            <label for="tagline">Tagline:</label>
+            <input
+              onChange={handleInputChange}
+              type="text"
+              id="tagline"
+              name="tagline"
+              required
+            />
+          </div>
+
+          <div className={styles.form_group}>
+            <div className={styles.input_group}>
+              <label for="brand">Brand:</label>
+              <input
+                onChange={handleInputChange}
+                type="text"
+                id="brand"
+                name="brand"
+                required
+              />
+            </div>
+            <div className={styles.input_group}>
+              <label for="price">Price:</label>
+              <input
+                onChange={handleInputChange}
+                type="number"
+                id="price"
+                name="price"
+                required
+              />
+            </div>
+          </div>
+          <div className={styles.form_group}>
+            <div className={styles.input_group}>
+              <label for="category">Category:</label>
+              <select
+                onChange={handleInputChange}
+                id="category"
+                name="category"
+                required
+              >
+                <option value="">Select a category</option>
+                <option value="Painting">Painting</option>
+                <option value="Home Decor">Home Decor</option>
+                <option value="Jwelleries">Jwelleries</option>
+                <option value="Accesories">Accessories</option>
+                <option value="Lifestyyle-Men">LifeStyle-Men</option>
+                <option value="Lifestyle-Women">LifeStyle-Women</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div className={styles.input_group}>
+              <label for="usage">Usage:</label>
+              <input
+                onChange={handleInputChange}
+                type="text"
+                id="usage"
+                name="usage"
+                required
+              />
+            </div>
+          </div>
+
+          <div className={styles.form_group}>
+            <label for="description">Description:</label>
+            <textarea
+              onChange={handleInputChange}
+              id="description"
+              name="description"
+              required
+            ></textarea>
+          </div>
+
+          <div className={styles.form_group}>
+            <label for="image">Image:</label>
+            <input
+              onChange={handleFileChange}
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              required
+            />
+          </div>
+
+          <Button
+            variant="contained"
+            size="large"
+            onClick={handleUpload}
+            sx={{
+              color: "white",
+              fontSize: 1 + "rem",
+              textTransform: "none",
+              backgroundColor: "#088395",
+            }}
+          >
+            Submit
+          </Button>
+        </form>
+      </section>
       <Footer />
     </>
   );
 };
+
+export default OnCreativeScrapYar;

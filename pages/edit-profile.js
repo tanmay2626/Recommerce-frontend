@@ -41,65 +41,59 @@ const Edit = (props) => {
       });
   };
   return (
-    <section className={styles.signin}>
-      <div className={styles.signin_box}>
-        <div className={styles.signin_form}>
-          <form className={styles.form_wrap}>
-            <label>Username</label>
-            <br />
-            <input onChange={handleChange} name="username" type="text" />
-            <br />
-            <label>Name</label>
-            <br />
-            <input onChange={handleChange} name="name" type="text" />
-            <label>Mobile Number</label>
-            <br />
-            <input onChange={handleChange} name="mobile" type="tel" />
-            <br />
-            <label>Address</label>
-            <br />
-            <textarea onChange={handleChange} name="address"></textarea>
-            <div className={styles.address_details}>
-              <div>
-                <label>City</label>
-                <br />
-                <input onChange={handleChange} name="city" type="text" />
+    <>
+      <Header />
+      <section className={styles.signin}>
+        <div className={styles.signin_box}>
+          <div className={styles.signin_form}>
+            <form className={styles.form_wrap}>
+              <label>Username</label>
+              <br />
+              <input onChange={handleChange} name="username" type="text" />
+              <br />
+              <label>Name</label>
+              <br />
+              <input onChange={handleChange} name="name" type="text" />
+              <label>Mobile Number</label>
+              <br />
+              <input onChange={handleChange} name="mobile" type="tel" />
+              <br />
+              <label>Address</label>
+              <br />
+              <textarea onChange={handleChange} name="address"></textarea>
+              <div className={styles.address_details}>
+                <div>
+                  <label>City</label>
+                  <br />
+                  <input onChange={handleChange} name="city" type="text" />
+                </div>
+                <div>
+                  <label>Pin Code</label>
+                  <br />
+                  <input onChange={handleChange} name="pincode" type="tel" />
+                </div>
               </div>
-              <div>
-                <label>Pin Code</label>
-                <br />
-                <input onChange={handleChange} name="pincode" type="tel" />
-              </div>
-            </div>
-            <Button
-              variant="contained"
-              size="large"
-              onClick={updateProfile}
-              sx={{
-                color: "white",
-                fontSize: 1 + "rem",
-                textTransform: "none",
-                width: 310 + "px",
-                mt: 2,
-                backgroundColor: "#088395",
-              }}
-            >
-              Submit
-            </Button>
-          </form>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={updateProfile}
+                sx={{
+                  color: "white",
+                  fontSize: 1 + "rem",
+                  textTransform: "none",
+                  width: 310 + "px",
+                  mt: 2,
+                  backgroundColor: "#088395",
+                }}
+              >
+                Submit
+              </Button>
+            </form>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
 export default Edit;
-
-Edit.getLayout = function PageLayout(page) {
-  return (
-    <>
-      <Header />
-      {page}
-    </>
-  );
-};
