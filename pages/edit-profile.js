@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 const Edit = (props) => {
   const router = useRouter();
+  const [error, setError] = useState(null);
   const [userData, setUserData] = useState({
     username: "",
     name: "",
@@ -34,10 +35,10 @@ const Edit = (props) => {
         },
       })
       .then((res) => {
-        router.push("/profile");
+        router.push("/");
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.response.data.message);
       });
   };
   return (
@@ -73,10 +74,33 @@ const Edit = (props) => {
                   <input onChange={handleChange} name="pincode" type="tel" />
                 </div>
               </div>
+              {error && (
+                <div className="error">
+                  <p>{error}</p>
+                </div>
+              )}
+              {(!userData.username ||
+                !userData.mobile ||
+                !userData.name ||
+                !userData.address ||
+                !userData.city ||
+                !userData.pincode) && (
+                <div className="error">
+                  <p>Please fill all required fields</p>
+                </div>
+              )}
               <Button
                 variant="contained"
                 size="large"
                 onClick={updateProfile}
+                disabled={
+                  !userData.username ||
+                  !userData.mobile ||
+                  !userData.name ||
+                  !userData.address ||
+                  !userData.city ||
+                  !userData.pincode
+                }
                 sx={{
                   color: "white",
                   fontSize: 1 + "rem",

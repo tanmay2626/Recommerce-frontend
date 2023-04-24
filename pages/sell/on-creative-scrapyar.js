@@ -171,11 +171,33 @@ const OnCreativeScrapYar = (props) => {
               required
             />
           </div>
+          {(!uploadData.title ||
+            !uploadData.usage ||
+            !uploadData.brand ||
+            !uploadData.description ||
+            !uploadData.category ||
+            !uploadData.tagline ||
+            !uploadData.price ||
+            !file) && (
+            <div className="error">
+              <p>Please fill all required fields</p>
+            </div>
+          )}
 
           <Button
             variant="contained"
             size="large"
             onClick={handleUpload}
+            disabled={
+              !uploadData.title ||
+              !uploadData.usage ||
+              !uploadData.brand ||
+              !uploadData.description ||
+              !uploadData.category ||
+              !uploadData.tagline ||
+              !uploadData.price ||
+              !file
+            }
             sx={{
               color: "white",
               fontSize: 1 + "rem",

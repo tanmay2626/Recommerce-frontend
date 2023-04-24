@@ -28,6 +28,11 @@ const Profile = (props) => {
   const handleEditClick = () => {
     router.push("/edit-profile");
   };
+
+  const handleSignOut = () => {
+    localStorage.clear();
+    router.push("/");
+  };
   return (
     <>
       <Header />
@@ -38,19 +43,34 @@ const Profile = (props) => {
           </div>
           <div>
             <h1>{profile?.name}</h1>
-            <Button
-              variant="contained"
-              size="small"
-              onClick={handleEditClick}
-              sx={{
-                color: "white",
-                fontSize: 1 + "rem",
-                textTransform: "none",
-                backgroundColor: "#088395",
-              }}
-            >
-              Edit
-            </Button>
+            <div className={styles.profile_buttons}>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={handleEditClick}
+                sx={{
+                  color: "white",
+                  fontSize: 1 + "rem",
+                  textTransform: "none",
+                  backgroundColor: "#088395",
+                }}
+              >
+                Edit
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={handleSignOut}
+                sx={{
+                  color: "white",
+                  fontSize: 1 + "rem",
+                  textTransform: "none",
+                  backgroundColor: "#088395",
+                }}
+              >
+                SignOut
+              </Button>
+            </div>
           </div>
         </div>
         <div className={styles.details}>
