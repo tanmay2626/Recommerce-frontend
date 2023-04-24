@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Feed.module.scss";
 import NativeSelect from "@mui/material/NativeSelect";
 import ProductCard from "@/components/Card/ProductCard";
@@ -6,8 +6,11 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Divider, IconButton } from "@mui/material";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
+import Link from "next/link";
+import axios from "axios";
 
 const Scrapyar = (props) => {
+  const [products, setProducts] = useState([]);
   const categories = [
     "Car",
     "Mobile",
@@ -29,6 +32,17 @@ const Scrapyar = (props) => {
       console.log("Heading selected:", value);
     }
   }
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/getScrapyar")
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <section className={styles.feeds_page}>
@@ -90,16 +104,25 @@ const Scrapyar = (props) => {
           </div>
         </div>
         <div className={styles.product_list}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {products.map((product, index) => {
+            return (
+              <ProductCard
+                key={index}
+                id={product._id}
+                title={product.title}
+                price={product.price}
+                img={product.image}
+              />
+            );
+          })}
         </div>
       </section>
       <div className={styles.sell}>
-        <IconButton sx={{ bgcolor: "#088395", p: 2 }}>
-          <AddAPhotoIcon sx={{ color: "white", fontSize: 25 }} />
-        </IconButton>
+        <Link href="/sell/on-scrapyar">
+          <IconButton sx={{ bgcolor: "#088395", p: 2 }}>
+            <AddAPhotoIcon sx={{ color: "white", fontSize: 25 }} />
+          </IconButton>
+        </Link>
       </div>
     </section>
   );

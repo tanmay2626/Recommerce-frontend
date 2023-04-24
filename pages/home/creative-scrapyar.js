@@ -6,8 +6,12 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Divider, IconButton } from "@mui/material";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
+import Link from "next/link";
+import { useEffect } from "react";
+import axios from "axios";
 
 const CreativeScrapyar = (props) => {
+  const [products, setProducts] = useState([]);
   const categories = [
     "Painting",
     "Home Decor",
@@ -29,6 +33,17 @@ const CreativeScrapyar = (props) => {
       console.log("Heading selected:", value);
     }
   }
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/getCreativeScrapyar")
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <section className={styles.feeds_page}>
@@ -90,16 +105,25 @@ const CreativeScrapyar = (props) => {
           </div>
         </div>
         <div className={styles.product_list}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {products.map((product, index) => {
+            return (
+              <ProductCard
+                key={index}
+                id={product._id}
+                title={product.title}
+                price={product.price}
+                img={product.image}
+              />
+            );
+          })}
         </div>
       </section>
       <div className={styles.sell}>
-        <IconButton sx={{ bgcolor: "#088395", p: 2 }}>
-          <AddAPhotoIcon sx={{ color: "white", fontSize: 25 }} />
-        </IconButton>
+        <Link href="/sell/on-creative-scrapyar">
+          <IconButton sx={{ bgcolor: "#088395", p: 2 }}>
+            <AddAPhotoIcon sx={{ color: "white", fontSize: 25 }} />
+          </IconButton>
+        </Link>
       </div>
     </section>
   );

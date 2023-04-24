@@ -3,58 +3,163 @@ import styles from "@/styles/Sell.module.scss";
 import { Button } from "@mui/material";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const OnScrapYar = (props) => {
+  const router = useRouter();
+  const [uploadData, setUploadData] = useState({
+    title: "",
+    tagline: "",
+    brand: "",
+    usage: "",
+    price: 0,
+    category: "",
+    description: "",
+  });
+  const [file, setFile] = useState(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setUploadData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleFileChange = (event) => {
+    const currFile = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", currFile);
+    formData.append("upload_preset", "hhfnuhff");
+    axios
+      .post(`https://api.cloudinary.com/v1_1/dldntxfqv/upload`, formData)
+      .then((res) => {
+        setFile(res.data.secure_url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    const data = {
+      title: uploadData.title,
+      tagline: uploadData.tagline,
+      brand: uploadData.brand,
+      usage: uploadData.usage,
+      price: uploadData.price,
+      category: uploadData.category,
+      description: uploadData.description,
+      image: file,
+    };
+    const token = localStorage.getItem("token");
+    axios
+      .post("http://localhost:8080/api/addToScrapyar", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        router.push("/profile");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <section className={styles.sell}>
       <h2>Sell with ScrapYar!</h2>
       <form>
         <div className={styles.form_group}>
           <label for="title">Title:</label>
-          <input type="text" id="title" name="title" required />
+          <input
+            onChange={handleInputChange}
+            type="text"
+            id="title"
+            name="title"
+            required
+          />
         </div>
         <div className={styles.form_group}>
           <label for="tagline">Tagline:</label>
-          <input type="text" id="tagline" name="tagline" required />
+          <input
+            onChange={handleInputChange}
+            type="text"
+            id="tagline"
+            name="tagline"
+            required
+          />
         </div>
 
         <div className={styles.form_group}>
           <div className={styles.input_group}>
             <label for="brand">Brand:</label>
-            <input type="text" id="brand" name="brand" required />
+            <input
+              onChange={handleInputChange}
+              type="text"
+              id="brand"
+              name="brand"
+              required
+            />
           </div>
           <div className={styles.input_group}>
             <label for="price">Price:</label>
-            <input type="number" id="price" name="price" required />
+            <input
+              onChange={handleInputChange}
+              type="number"
+              id="price"
+              name="price"
+              required
+            />
           </div>
         </div>
         <div className={styles.form_group}>
           <div className={styles.input_group}>
             <label for="category">Category:</label>
-            <select id="category" name="category" required>
+            <select
+              onChange={handleInputChange}
+              id="category"
+              name="category"
+              required
+            >
               <option value="">Select a category</option>
-              <option value="car">Car</option>
-              <option value="mobile">Mobile</option>
-              <option value="garden">Garden</option>
-              <option value="sports">Sports</option>
-              <option value="electronics">Electronics</option>
-              <option value="other">Other</option>
+              <option value="Car">Car</option>
+              <option value="Mobile">Mobile</option>
+              <option value="Garden">Garden</option>
+              <option value="Sports">Sports</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div className={styles.input_group}>
             <label for="usage">Usage:</label>
-            <input type="text" id="usage" name="usage" required />
+            <input
+              onChange={handleInputChange}
+              type="text"
+              id="usage"
+              name="usage"
+              required
+            />
           </div>
         </div>
 
         <div className={styles.form_group}>
           <label for="description">Description:</label>
-          <textarea id="description" name="description" required></textarea>
+          <textarea
+            onChange={handleInputChange}
+            id="description"
+            name="description"
+            required
+          ></textarea>
         </div>
 
         <div className={styles.form_group}>
           <label for="image">Image:</label>
           <input
+            onChange={handleFileChange}
             type="file"
             id="image"
             name="image"
@@ -66,7 +171,7 @@ const OnScrapYar = (props) => {
         <Button
           variant="contained"
           size="large"
-          type="submit"
+          onClick={handleUpload}
           sx={{
             color: "white",
             fontSize: 1 + "rem",
