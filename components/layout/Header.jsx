@@ -33,9 +33,22 @@ const Header = () => {
     <div className={styles.header}>
       <div className={styles.logo}>
         {site ? (
-          <img src="/images/creative logo.svg" alt="logo" />
+          <img
+            onClick={() => {
+              router.push("/creative-scrapyar");
+            }}
+            src="/images/creative logo.svg"
+            alt="logo"
+          />
         ) : (
-          <img src="/images/logo.svg" alt="logo" className={styles.scrapyar} />
+          <img
+            onClick={() => {
+              router.push("/scrapyar");
+            }}
+            src="/images/logo.svg"
+            alt="logo"
+            className={styles.scrapyar}
+          />
         )}
       </div>
       <div className={styles.features}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Auth.module.scss";
 import { Button, Divider } from "@mui/material";
 import Link from "next/link";
@@ -24,6 +24,13 @@ const Login = (props) => {
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/");
+    }
+  });
 
   const Login = (e) => {
     e.preventDefault();

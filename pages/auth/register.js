@@ -24,6 +24,13 @@ const Register = (props) => {
     }));
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/");
+    }
+  });
+
   const Register = (e) => {
     e.preventDefault();
     const email = credentials.email;

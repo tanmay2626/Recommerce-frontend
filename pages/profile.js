@@ -33,6 +33,13 @@ const Profile = (props) => {
     localStorage.clear();
     router.push("/");
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/auth/login");
+    }
+  });
   return (
     <>
       <Header />

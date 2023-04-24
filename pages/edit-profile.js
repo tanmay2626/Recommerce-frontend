@@ -41,6 +41,12 @@ const Edit = (props) => {
         setError(error.response.data.message);
       });
   };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/auth/login");
+    }
+  });
   return (
     <>
       <Header />
