@@ -6,16 +6,32 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import ProductCard from "@/components/Card/ProductCard";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useState } from "react";
 const Product = (props) => {
+  const [product, setProduct] = useState({});
+  const [related, setRelated] = useState([]);
+  const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/getCreativeScrapyar/${id}`)
+      .then((res) => {
+        setProduct(res.data.product);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <section className={styles.product_page}>
       <p>Home / Creative Scrapyar / Product</p>
       <section className={styles.product_view}>
         <div>
-          <img
-            src="https://apollo-singapore.akamaized.net/v1/files/jbzabmua2gl5-IN/image;s=780x0;q=60"
-            alt="product-name"
-          />
+          <img src={product?.image} alt="product-name" />
           <IconButton
             aria-label="delete"
             sx={{
@@ -31,23 +47,11 @@ const Product = (props) => {
           </IconButton>
         </div>
         <div>
-          <h1 className={styles.product_name}>
-            MNC USED LAPTOP BRAND NEW CONDITION DELL / HP
-          </h1>
-          <h1 className={styles.product_tagline}>
-            Look Like as Brand New Condition Certified Laptops - Fully working
-            Big Qty Available
-          </h1>
+          <h1 className={styles.product_name}>{product?.title}</h1>
+          <h1 className={styles.product_tagline}>{product?.tagline}</h1>
           <Divider />
-          <h1 className={styles.product_price}>₹ 16,500</h1>
-          <p className={styles.product_description}>
-            MODEL NO - DELL LATITUDE E 5470 Configuration Details : - PROCESSOR
-            - CORE I5 - 6TH GENERATION - 8 GB RAM ( Support 32 GB RAM ) - 256 GB
-            SSD ( Support SSD/1 TB) - Graphics 4 GB - Intel HD - Webcam - Wifi -
-            Orginal Adaptor / Charger - Gσσ∂ battery вα¢кυρ - Look like Brand
-            New Condition - Win 10 Pro & Ms Office And All Basic Softwares. --
-            Ready to Use
-          </p>
+          <h1 className={styles.product_price}>₹ {product?.price}</h1>
+          <p className={styles.product_description}>{product?.description}</p>
           <Divider />
           <div className={styles.product_checkout}>
             <div>
@@ -55,7 +59,7 @@ const Product = (props) => {
               <div className={styles.contact}>
                 {" "}
                 <div>
-                  <h1>951*******</h1>
+                  <h1>{product?.contact}</h1>
                 </div>
                 <div>
                   {" "}
@@ -92,19 +96,19 @@ const Product = (props) => {
             <table>
               <tr>
                 <td className={styles.specification}>Brand</td>
-                <td>HP</td>
+                <td>{product?.brand}</td>
               </tr>
               <tr>
                 <td className={styles.specification}>Category</td>
-                <td>Electronics</td>
+                <td>{product?.category}</td>
               </tr>
               <tr>
                 <td className={styles.specification}>Usage</td>
-                <td>2 year old</td>
+                <td>{product?.usage}</td>
               </tr>
               <tr>
                 <td className={styles.specification}>City</td>
-                <td>Pimpri, Pune</td>
+                <td>{product?.contact}</td>
               </tr>
             </table>
           </div>
@@ -114,10 +118,7 @@ const Product = (props) => {
         <h3>Related Products</h3>
       </Divider>
       <div className={styles.related}>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <p>No related products yet</p>
       </div>
     </section>
   );
