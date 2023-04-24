@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Feed.module.scss";
 import NativeSelect from "@mui/material/NativeSelect";
 import ProductCard from "@/components/Card/ProductCard";
@@ -7,19 +7,20 @@ import Footer from "@/components/layout/Footer";
 import { Divider, IconButton } from "@mui/material";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import Link from "next/link";
-import { useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
-const CreativeScrapyar = (props) => {
+const Scrapyar = (props) => {
+  const router = useRouter();
   const [products, setProducts] = useState([]);
   const categories = [
-    "Painting",
-    "Home Decor",
-    "Jwelleries",
-    "Arts",
-    "Accessories",
-    "LifeStyle-Men",
-    "LifeStyle-Women",
+    "Car",
+    "Mobile",
+    "Laptop",
+    "Electronic",
+    "Garden",
+    "Fashion",
+    "Sports",
     "Other",
   ];
   const [selected, setSelected] = useState("");
@@ -36,7 +37,7 @@ const CreativeScrapyar = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/getCreativeScrapyar")
+      .get("http://localhost:8080/api/getScrapyar")
       .then((res) => {
         setProducts(res.data);
       })
@@ -48,7 +49,7 @@ const CreativeScrapyar = (props) => {
   return (
     <section className={styles.feeds_page}>
       <p>Landing Page / Scrapyar</p>
-      <img src="/images/Creative Banner.png" alt="banner" />
+      <img src="/images/banner.png" alt="banner" />
       <div className={styles.feed_headline}>
         <div>
           <h1>Fresh recommendations</h1>
@@ -107,19 +108,25 @@ const CreativeScrapyar = (props) => {
         <div className={styles.product_list}>
           {products.map((product, index) => {
             return (
-              <ProductCard
+              <div
                 key={index}
-                id={product._id}
-                title={product.title}
-                price={product.price}
-                img={product.image}
-              />
+                onClick={() => {
+                  router.push(`/scrapyar/${product._id}`);
+                }}
+              >
+                <ProductCard
+                  id={product._id}
+                  title={product.title}
+                  price={product.price}
+                  img={product.image}
+                />
+              </div>
             );
           })}
         </div>
       </section>
       <div className={styles.sell}>
-        <Link href="/sell/on-creative-scrapyar">
+        <Link href="/sell/on-scrapyar">
           <IconButton sx={{ bgcolor: "#088395", p: 2 }}>
             <AddAPhotoIcon sx={{ color: "white", fontSize: 25 }} />
           </IconButton>
@@ -129,9 +136,9 @@ const CreativeScrapyar = (props) => {
   );
 };
 
-export default CreativeScrapyar;
+export default Scrapyar;
 
-CreativeScrapyar.getLayout = function PageLayout(page) {
+Scrapyar.getLayout = function PageLayout(page) {
   return (
     <>
       <Header />

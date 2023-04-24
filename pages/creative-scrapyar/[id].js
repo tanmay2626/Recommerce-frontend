@@ -45,7 +45,7 @@ const Product = (props) => {
             - CORE I5 - 6TH GENERATION - 8 GB RAM ( Support 32 GB RAM ) - 256 GB
             SSD ( Support SSD/1 TB) - Graphics 4 GB - Intel HD - Webcam - Wifi -
             Orginal Adaptor / Charger - Gσσ∂ battery вα¢кυρ - Look like Brand
-            New Condition - Win 10 Pro & Ms Office And All Basic Software's. --
+            New Condition - Win 10 Pro & Ms Office And All Basic Softwares. --
             Ready to Use
           </p>
           <Divider />

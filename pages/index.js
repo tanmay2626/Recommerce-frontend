@@ -9,11 +9,11 @@ export default function Home() {
 
   const handleScrapyar = () => {
     localStorage.setItem("current", "scrapyar");
-    router.push("/home/scrapyar");
+    router.push("/scrapyar");
   };
   const handleCreativeScrapyar = () => {
     localStorage.setItem("current", "creative");
-    router.push("/home/creative-scrapyar");
+    router.push("/creative-scrapyar");
   };
 
   return (
