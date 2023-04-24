@@ -50,7 +50,9 @@ const Product = (props) => {
           <h1 className={styles.product_name}>{product?.title}</h1>
           <h1 className={styles.product_tagline}>{product?.tagline}</h1>
           <Divider />
-          <h1 className={styles.product_price}>₹ {product?.price}</h1>
+          <h1 className={styles.product_price}>
+            ₹ {product?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </h1>
           <p className={styles.product_description}>{product?.description}</p>
           <Divider />
           <div className={styles.product_checkout}>
