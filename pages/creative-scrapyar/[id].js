@@ -11,20 +11,45 @@ import { useEffect } from "react";
 import { useState } from "react";
 const Product = (props) => {
   const [product, setProduct] = useState({});
+  const [contactDetails, setContactDetails] = useState(false);
   const [related, setRelated] = useState([]);
+
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/getCreativeScrapyar/${id}`)
-      .then((res) => {
-        setProduct(res.data.product);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (id) {
+      axios
+        .get(`http://localhost:8080/api/getCreativeScrapyar/${id}`)
+        .then((res) => {
+          setProduct(res.data.product);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, [id]);
+
+  const checkIfLogged = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setContactDetails(true);
+      axios
+        .put(`http://localhost:8080/api/user/updateViews`, id, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          console.log("Added to views");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alert("Please login to access seller details");
+    }
+  };
   return (
     <>
       <Header />
@@ -59,15 +84,20 @@ const Product = (props) => {
             <Divider />
             <div className={styles.product_checkout}>
               <div>
-                <h1>Contact Seller</h1>
+                <h1>Contact {product.contact?.name}</h1>
                 <div className={styles.contact}>
                   {" "}
                   <div>
-                    <h1>{product?.contact}</h1>
+                    {contactDetails ? (
+                      <h1>{product.contact?.mobile}</h1>
+                    ) : (
+                      <h1>*********</h1>
+                    )}
                   </div>
                   <div>
                     {" "}
                     <IconButton
+                      onClick={checkIfLogged}
                       aria-label="delete"
                       sx={{
                         mt: 1.5,
@@ -112,7 +142,7 @@ const Product = (props) => {
                 </tr>
                 <tr>
                   <td className={styles.specification}>City</td>
-                  <td>{product?.contact}</td>
+                  <td>{product?.contact?.city}</td>
                 </tr>
               </table>
             </div>

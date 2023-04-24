@@ -185,7 +185,7 @@ const CreativeScrapyar = (props) => {
           </div>
         </section>
         <div className={styles.sell}>
-          <Link href="/sell/on-scrapyar">
+          <Link href="/sell/on-creative-scrapyar">
             <IconButton sx={{ bgcolor: "#088395", p: 2 }}>
               <AddAPhotoIcon sx={{ color: "white", fontSize: 25 }} />
             </IconButton>
