@@ -24,6 +24,17 @@
 
 }
 
+.login__button{
+    text-align: right;
+
+    & > img {
+        width: 50px;
+            border-radius: 45px;
+            height: auto;
+    }
+}
+
+
 @media only screen and (max-width: 767px){
     .header{
         height: 2.5rem;

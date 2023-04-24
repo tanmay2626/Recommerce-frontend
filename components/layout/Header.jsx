@@ -5,12 +5,22 @@ import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 
 const Header = ({ current }) => {
+  const [token, setToken] = useState(false);
   const router = useRouter();
 
   const redirectToLogin = () => {
     router.push("/auth/login");
   };
 
+  const redirectToProfile = () => {
+    router.push("/profile");
+  };
+
+  useEffect(() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("token")) {
+      setToken(true);
+    }
+  }, []);
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -23,20 +33,28 @@ const Header = ({ current }) => {
       <div className={styles.features}>
         <Search />
         <div className={styles.login__button}>
-          <Button
-            onClick={redirectToLogin}
-            variant="contained"
-            size="large"
-            type="submit"
-            sx={{
-              color: "white",
-              fontSize: 1 + "rem",
-              textTransform: "none",
-              bgcolor: "#088395",
-            }}
-          >
-            Login
-          </Button>
+          {token ? (
+            <img
+              className={styles.profile_img}
+              src="/images/profile.gif"
+              alt="profile"
+            />
+          ) : (
+            <Button
+              onClick={redirectToLogin}
+              variant="contained"
+              size="large"
+              type="submit"
+              sx={{
+                color: "white",
+                fontSize: 1 + "rem",
+                textTransform: "none",
+                bgcolor: "#088395",
+              }}
+            >
+              Login
+            </Button>
+          )}
         </div>
       </div>
     </div>
