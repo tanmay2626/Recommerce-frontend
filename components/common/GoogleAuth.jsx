@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 function GoogleAuth() {
   const router = useRouter();
   const handleCallbackResponse = (res) => {
-    console.log(res.credential);
     const cred = jwt_decode(res.credential);
     const email = cred.email;
     axios

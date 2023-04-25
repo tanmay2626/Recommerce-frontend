@@ -19,6 +19,7 @@ const Profile = (props) => {
       })
       .then((res) => {
         setProfile(res.data.user.data);
+        console.log(res.data.user.data);
       })
       .catch((error) => {
         console.log(error);
@@ -86,12 +87,35 @@ const Profile = (props) => {
           </h3>
         </div>
         <div className={styles.address}>{profile?.address}</div>
-        <h1>My views</h1>
+        <h1>My Orders</h1>
         <Divider />
-        <div className={styles.profile_section}>No Views yet</div>
-        <h1>My Products</h1>
-        <Divider />
-        <div className={styles.profile_section}>No Products yet</div>
+        <div className={styles.profile_section}>
+          {profile.orders && profile.orders.length > 0 ? (
+            profile.orders.map((item, index) => {
+              return (
+                <div key={index} className={styles.orders}>
+                  <div className={styles.heading}>
+                    <div>
+                      <h3>
+                        <span>{item.productName} - </span>₹
+                        {item.amount
+                          ?.toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className={styles.lower}>
+                    <h3>
+                      <span>Transaction ID:</span> {item.transactionId}{" "}
+                    </h3>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <p>No orders yet</p>
+          )}
+        </div>
       </section>
     </>
   );
