@@ -10,6 +10,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useStateValue } from "@/libs/StateProvider";
+import Search from "@/components/common/Search";
 
 const CreativeScrapyar = (props) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -101,7 +102,7 @@ const CreativeScrapyar = (props) => {
                 id: "uncontrolled-native",
                 sx: {
                   fontWeight: 500,
-                  fontSize: 20,
+                  fontSize: { xs: 15, md: 20, lg: 20 },
                 },
               }}
               disableUnderline
@@ -113,10 +114,14 @@ const CreativeScrapyar = (props) => {
           </div>
         </div>
         <section className={styles.feed}>
+          <div className={styles.search_desktop}>
+            <Search />
+          </div>
+
           <div className={styles.filter}>
             <h1>Filters</h1>
             <div>
-              <h2>By Categpory : </h2>
+              <h2>By Category : </h2>
               <Divider />
               <div className={styles.categories}>
                 {categories.map((heading) => (

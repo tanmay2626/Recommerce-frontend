@@ -23,9 +23,9 @@ const Search = () => {
       component="form"
       sx={{
         bgcolor: "#F5F5F5",
-        display: { xs: "none", md: "flex", lg: "flex" },
+        display: "flex",
         alignItems: "center",
-        width: { xs: 120, md: 200 },
+        width: { xs: 240, md: 200 },
         borderRadius: 2,
         mr: 4,
         p: "5px 10px",
@@ -34,7 +34,7 @@ const Search = () => {
       <InputBase
         sx={{
           flex: 1,
-          fontSize: { xs: 0.8 + "rem", md: 1 + "rem" },
+          fontSize: 1 + "rem",
           p: "5px",
         }}
         placeholder="Search"

@@ -58,19 +58,6 @@ const Product = (props) => {
         <section className={styles.product_view}>
           <div>
             <img src={product?.image} alt="product-name" />
-            <IconButton
-              aria-label="delete"
-              sx={{
-                position: "absolute",
-                color: "#05BFDB",
-                backgroundColor: "gray",
-                marginBottom: 4,
-                bottom: "0",
-                right: "0",
-              }}
-            >
-              <FavoriteBorderIcon />
-            </IconButton>
           </div>
           <div>
             <h1 className={styles.product_name}>{product?.title}</h1>
@@ -109,7 +96,7 @@ const Product = (props) => {
                 </div>
               </div>
               <div>
-                <h1>Get Delivery with ScrapYar</h1>
+                <h1>Get Delivery</h1>
                 <Button
                   variant="contained"
                   endIcon={<KeyboardDoubleArrowRightIcon />}
@@ -148,12 +135,6 @@ const Product = (props) => {
             </div>
           </div>
         </section>
-        <Divider sx={{ mt: 2 }}>
-          <h3>Related Products</h3>
-        </Divider>
-        <div className={styles.related}>
-          <p>No related products yet</p>
-        </div>
       </section>
       <Footer />
     </>

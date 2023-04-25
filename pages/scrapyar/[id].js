@@ -11,7 +11,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 const Product = (props) => {
   const [product, setProduct] = useState({});
+  const [contactDetails, setContactDetails] = useState(false);
   const [related, setRelated] = useState([]);
+
   const router = useRouter();
   const { id } = router.query;
 
@@ -21,12 +23,34 @@ const Product = (props) => {
         .get(`http://localhost:8080/api/getScrapyar/${id}`)
         .then((res) => {
           setProduct(res.data.product);
+          console.log(res.data.product);
         })
         .catch((error) => {
           console.log(error);
         });
     }
   }, [id]);
+
+  const checkIfLogged = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setContactDetails(true);
+      axios
+        .put(`http://localhost:8080/api/user/updateViews`, id, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          console.log("Added to views");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alert("Please login to access seller details");
+    }
+  };
   return (
     <>
       <Header />
@@ -35,19 +59,6 @@ const Product = (props) => {
         <section className={styles.product_view}>
           <div>
             <img src={product?.image} alt="product-name" />
-            <IconButton
-              aria-label="delete"
-              sx={{
-                position: "absolute",
-                color: "#05BFDB",
-                backgroundColor: "gray",
-                marginBottom: 4,
-                bottom: "0",
-                right: "0",
-              }}
-            >
-              <FavoriteBorderIcon />
-            </IconButton>
           </div>
           <div>
             <h1 className={styles.product_name}>{product?.title}</h1>
@@ -61,15 +72,20 @@ const Product = (props) => {
             <Divider />
             <div className={styles.product_checkout}>
               <div>
-                <h1>Contact Seller</h1>
+                <h1>Contact {product.contact?.name}</h1>
                 <div className={styles.contact}>
                   {" "}
                   <div>
-                    <h1>{product?.contact}</h1>
+                    {contactDetails ? (
+                      <h1>{product.contact?.mobile}</h1>
+                    ) : (
+                      <h1>*********</h1>
+                    )}
                   </div>
                   <div>
                     {" "}
                     <IconButton
+                      onClick={checkIfLogged}
                       aria-label="delete"
                       sx={{
                         mt: 1.5,
@@ -81,7 +97,7 @@ const Product = (props) => {
                 </div>
               </div>
               <div>
-                <h1>Get Delivery with ScrapYar</h1>
+                <h1>Get Delivery</h1>
                 <Button
                   variant="contained"
                   endIcon={<KeyboardDoubleArrowRightIcon />}
@@ -100,32 +116,28 @@ const Product = (props) => {
             <Divider />
             <div className={styles.product_details}>
               <table>
-                <tr>
-                  <td className={styles.specification}>Brand</td>
-                  <td>{product?.brand}</td>
-                </tr>
-                <tr>
-                  <td className={styles.specification}>Category</td>
-                  <td>{product?.category}</td>
-                </tr>
-                <tr>
-                  <td className={styles.specification}>Usage</td>
-                  <td>{product?.usage}</td>
-                </tr>
-                <tr>
-                  <td className={styles.specification}>City</td>
-                  <td>{product?.contact}</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td className={styles.specification}>Brand</td>
+                    <td>{product?.brand}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.specification}>Category</td>
+                    <td>{product?.category}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.specification}>Usage</td>
+                    <td>{product?.usage}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.specification}>City</td>
+                    <td>{product?.contact?.city}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
         </section>
-        <Divider sx={{ mt: 2 }}>
-          <h3>Related Products</h3>
-        </Divider>
-        <div className={styles.related}>
-          <p>No related products yet</p>
-        </div>
       </section>
       <Footer />
     </>

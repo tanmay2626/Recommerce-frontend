@@ -42,9 +42,13 @@
         top: 0;
     }
     .logo{
+        .creative_logo_img{
+            width: 200px;
+        }
 
-        & > img{
-            width: 100px;
+        .logo_img{
+            width: 200px;
+            margin-left: -20px;
         }
     }
 
@@ -53,6 +57,10 @@
             font-size: 1rem;
             padding: 1px 15px;
         }
+    }
+
+    .search_mb{
+        display: none;
     }
 }
 

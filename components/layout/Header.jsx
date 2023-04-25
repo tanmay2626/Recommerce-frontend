@@ -34,6 +34,7 @@ const Header = () => {
       <div className={styles.logo}>
         {site ? (
           <img
+            className={styles.creative_logo_img}
             onClick={() => {
               router.push("/creative-scrapyar");
             }}
@@ -42,6 +43,7 @@ const Header = () => {
           />
         ) : (
           <img
+            className={styles.logo_img}
             onClick={() => {
               router.push("/scrapyar");
             }}
@@ -52,7 +54,10 @@ const Header = () => {
         )}
       </div>
       <div className={styles.features}>
-        <Search />
+        <div className={styles.search_mb}>
+          <Search />
+        </div>
+
         <div className={styles.login__button}>
           {token ? (
             <img

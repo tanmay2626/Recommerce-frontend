@@ -8,6 +8,18 @@
     h3{
         font-weight: 500;
     }
+
+    .related{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 25px;
+        text-align: center;
+        
+    
+        & > p{
+            margin: 0 auto;
+        }
+    }
 }
 
 .product_view{
@@ -103,9 +115,9 @@
     font-size: 1.8rem;
 }
 
-.related{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 25px;
-    text-align: center;
+
+@media only screen and (max-width: 768px){
+    .product_view{
+        flex-direction: column;
+    }
 }

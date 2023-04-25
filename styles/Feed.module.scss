@@ -108,3 +108,30 @@
     align-items: center;
     border-radius: 50px;
 }
+
+.search_desktop{
+    display: none;
+}
+
+@media only screen and (max-width: 768px){
+    .feed_headline{
+        font-size: 0.8rem;
+    }
+
+    .feed{
+        flex-direction: column;
+
+        .product_list {
+            display: grid;        
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .search_desktop{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+      
+}
