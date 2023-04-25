@@ -63,7 +63,7 @@ const OnScrapYar = (props) => {
         },
       })
       .then((res) => {
-        router.push("/profile");
+        router.push("/scrapyar");
       })
       .catch((err) => {
         console.log(err);

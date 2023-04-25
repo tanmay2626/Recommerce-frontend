@@ -69,7 +69,7 @@ const Product = (props) => {
     <>
       <Header />
       <section className={styles.product_page}>
-        <p>Home / Creative Scrapyar / Product</p>
+        <p>Home / Creative Scrapyar / {product.title}</p>
         <section className={styles.product_view}>
           <div>
             <img src={product?.image} alt="product-name" />
@@ -133,16 +133,16 @@ const Product = (props) => {
               <table>
                 <tbody>
                   <tr>
-                    <td className={styles.specification}>Brand</td>
-                    <td>{product?.brand}</td>
+                    <td className={styles.specification}>Artist</td>
+                    <td>{product?.artist}</td>
                   </tr>
                   <tr>
                     <td className={styles.specification}>Category</td>
                     <td>{product?.category}</td>
                   </tr>
                   <tr>
-                    <td className={styles.specification}>Usage</td>
-                    <td>{product?.usage}</td>
+                    <td className={styles.specification}>Age</td>
+                    <td>{product?.age}</td>
                   </tr>
                   <tr>
                     <td className={styles.specification}>City</td>

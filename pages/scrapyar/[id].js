@@ -69,7 +69,7 @@ const Product = (props) => {
     <>
       <Header />
       <section className={styles.product_page}>
-        <p>Home / Creative Scrapyar / Product</p>
+        <p>Home / Creative Scrapyar / {product.title}</p>
         <section className={styles.product_view}>
           <div>
             <img src={product?.image} alt="product-name" />

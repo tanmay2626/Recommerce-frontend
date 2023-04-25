@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Auth.module.scss";
 import { Button } from "@mui/material";
 import Header from "@/components/layout/Header";

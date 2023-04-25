@@ -11,8 +11,8 @@ const OnCreativeScrapYar = (props) => {
   const [uploadData, setUploadData] = useState({
     title: "",
     tagline: "",
-    brand: "",
-    usage: "",
+    artist: "",
+    age: "",
     price: 0,
     category: "",
     description: "",
@@ -49,8 +49,8 @@ const OnCreativeScrapYar = (props) => {
     const data = {
       title: uploadData.title,
       tagline: uploadData.tagline,
-      brand: uploadData.brand,
-      usage: uploadData.usage,
+      artist: uploadData.artist,
+      age: uploadData.age,
       price: uploadData.price,
       category: uploadData.category,
       description: uploadData.description,
@@ -64,7 +64,7 @@ const OnCreativeScrapYar = (props) => {
         },
       })
       .then((res) => {
-        router.push("/profile");
+        router.push("/creative-scrapyar");
       })
       .catch((err) => {
         console.log(err);
@@ -106,12 +106,12 @@ const OnCreativeScrapYar = (props) => {
 
           <div className={styles.form_group}>
             <div className={styles.input_group}>
-              <label for="brand">Brand:</label>
+              <label for="artist">Artist:</label>
               <input
                 onChange={handleInputChange}
                 type="text"
-                id="brand"
-                name="brand"
+                id="artist"
+                name="artist"
                 required
               />
             </div>
@@ -146,12 +146,12 @@ const OnCreativeScrapYar = (props) => {
               </select>
             </div>
             <div className={styles.input_group}>
-              <label for="usage">Usage:</label>
+              <label for="age">Age:</label>
               <input
                 onChange={handleInputChange}
                 type="text"
-                id="usage"
-                name="usage"
+                id="age"
+                name="age"
                 required
               />
             </div>
@@ -179,8 +179,8 @@ const OnCreativeScrapYar = (props) => {
             />
           </div>
           {(!uploadData.title ||
-            !uploadData.usage ||
-            !uploadData.brand ||
+            !uploadData.age ||
+            !uploadData.artist ||
             !uploadData.description ||
             !uploadData.category ||
             !uploadData.tagline ||
@@ -197,8 +197,8 @@ const OnCreativeScrapYar = (props) => {
             onClick={handleUpload}
             disabled={
               !uploadData.title ||
-              !uploadData.usage ||
-              !uploadData.brand ||
+              !uploadData.age ||
+              !uploadData.artist ||
               !uploadData.description ||
               !uploadData.category ||
               !uploadData.tagline ||
