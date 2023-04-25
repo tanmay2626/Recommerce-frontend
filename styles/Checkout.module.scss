@@ -1,0 +1,55 @@
+.signin{
+    width: 300px;
+    margin: -50px auto;
+    font-family: 'Roboto', sans-serif;
+
+    & > p{
+        color : red
+    }
+}
+
+
+.signin_box{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 100px;
+
+    .summary{
+        text-align: left;
+    }
+
+    .payment{
+        text-align: left;
+    }
+
+}
+
+.summary_label{
+    font-weight: 500;
+    
+}
+
+.product_table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .product_table td {
+    padding: 9px;
+    text-align: left;
+    font-size: 1.2rem;
+  }
+
+  
+.success{
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+
+    & > img{
+        height: 400px;
+    }
+}
+
+  

@@ -42,11 +42,18 @@ function GoogleAuth() {
       theme: "outline",
       size: "large",
     });
+
+    const element = document.getElementsByClassName(
+      "nsm7Bb-HzV7m-LgbsSe-Bz112c"
+    )[0];
+    element.style.display = "none";
   }, []);
 
   return (
     <div className="App">
-      <div id="signIn"></div>
+      <button>
+        <div id="signIn"></div>
+      </button>
     </div>
   );
 }

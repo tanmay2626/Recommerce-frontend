@@ -9,10 +9,12 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useStateValue } from "@/libs/StateProvider";
 const Product = (props) => {
   const [product, setProduct] = useState({});
   const [contactDetails, setContactDetails] = useState(false);
   const [related, setRelated] = useState([]);
+  const [{}, dispatch] = useStateValue();
 
   const router = useRouter();
   const { id } = router.query;
@@ -29,6 +31,19 @@ const Product = (props) => {
         });
     }
   }, [id]);
+
+  const makePayment = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch({
+        type: "SET_PRODUCT",
+        item: product,
+      });
+      router.push("/checkout");
+    } else {
+      alert("Please login to proceed!");
+    }
+  };
 
   const checkIfLogged = () => {
     const token = localStorage.getItem("token");
@@ -98,6 +113,7 @@ const Product = (props) => {
               <div>
                 <h1>Get Delivery</h1>
                 <Button
+                  onClick={makePayment}
                   variant="contained"
                   endIcon={<KeyboardDoubleArrowRightIcon />}
                   size="medium"
@@ -115,22 +131,24 @@ const Product = (props) => {
             <Divider />
             <div className={styles.product_details}>
               <table>
-                <tr>
-                  <td className={styles.specification}>Brand</td>
-                  <td>{product?.brand}</td>
-                </tr>
-                <tr>
-                  <td className={styles.specification}>Category</td>
-                  <td>{product?.category}</td>
-                </tr>
-                <tr>
-                  <td className={styles.specification}>Usage</td>
-                  <td>{product?.usage}</td>
-                </tr>
-                <tr>
-                  <td className={styles.specification}>City</td>
-                  <td>{product?.contact?.city}</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td className={styles.specification}>Brand</td>
+                    <td>{product?.brand}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.specification}>Category</td>
+                    <td>{product?.category}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.specification}>Usage</td>
+                    <td>{product?.usage}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.specification}>City</td>
+                    <td>{product?.contact?.city}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>

@@ -2,6 +2,7 @@ export const initialState = {
   category: null,
   search: null,
   maxRange: null,
+  product: null,
 };
 
 const reducer = (state, action) => {
@@ -21,6 +22,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         maxRange: action.item,
+      };
+    case "SET_PRODUCT":
+      return {
+        ...state,
+        product: action.item,
       };
     default:
       return state;
