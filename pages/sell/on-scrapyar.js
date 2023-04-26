@@ -57,7 +57,7 @@ const OnScrapYar = (props) => {
     };
     const token = localStorage.getItem("token");
     axios
-      .post("http://localhost:8080/api/addToScrapyar", data, {
+      .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/addToScrapyar`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

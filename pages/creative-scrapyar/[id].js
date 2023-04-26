@@ -22,7 +22,9 @@ const Product = (props) => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:8080/api/getCreativeScrapyar/${id}`)
+        .get(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/getCreativeScrapyar/${id}`
+        )
         .then((res) => {
           setProduct(res.data.product);
         })
@@ -50,7 +52,7 @@ const Product = (props) => {
     if (token) {
       setContactDetails(true);
       axios
-        .put(`http://localhost:8080/api/user/updateViews`, id, {
+        .put(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/updateViews`, id, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

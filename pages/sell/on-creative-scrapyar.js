@@ -58,11 +58,15 @@ const OnCreativeScrapYar = (props) => {
     };
     const token = localStorage.getItem("token");
     axios
-      .post("http://localhost:8080/api/addToCreativeScrapyar", data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/addToCreativeScrapyar`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         router.push("/creative-scrapyar");
       })

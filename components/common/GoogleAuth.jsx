@@ -9,7 +9,7 @@ function GoogleAuth() {
     const cred = jwt_decode(res.credential);
     const email = cred.email;
     axios
-      .post(`http://localhost:8080/api/user/oauth/signin`, {
+      .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/oauth/signin`, {
         email,
       })
       .then((res) => {
@@ -30,8 +30,7 @@ function GoogleAuth() {
     /* global google */
     google.accounts.id.initialize(
       {
-        client_id:
-          "73911737589-pet5993a7ellig1aikd1ljlf65ecdopf.apps.googleusercontent.com",
+        client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
         callback: handleCallbackResponse,
       },
       []

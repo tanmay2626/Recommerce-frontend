@@ -55,7 +55,7 @@ const CreativeScrapyar = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/getCreativeScrapyar")
+      .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/getCreativeScrapyar`)
       .then((res) => {
         setProducts(res.data);
       })

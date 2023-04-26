@@ -55,7 +55,7 @@ const Scrapyar = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/getScrapyar")
+      .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/getScrapyar`)
       .then((res) => {
         setProducts(res.data);
       })

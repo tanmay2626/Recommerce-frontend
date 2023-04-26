@@ -12,7 +12,7 @@ const Profile = (props) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:8080/api/user/user", {
+      .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -90,21 +90,19 @@ const Profile = (props) => {
         <h1>My Orders</h1>
         <Divider />
         <div className={styles.profile_section}>
-          {profile.orders && profile.orders.length > 0 ? (
-            profile.orders.map((item, index) => {
+          {profile?.orders && profile?.orders.length > 0 ? (
+            profile?.orders.map((item, index) => {
               return (
                 <div key={index} className={styles.orders}>
-                  <div className={styles.heading}>
-                    <div>
-                      <h3>
-                        <span>{item.productName} - </span>₹
-                        {item.amount
-                          ?.toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                      </h3>
-                    </div>
+                  <div>
+                    <h3>
+                      <span>{item.productName} - </span>₹
+                      {item.amount
+                        ?.toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    </h3>
                   </div>
-                  <div className={styles.lower}>
+                  <div>
                     <h3>
                       <span>Transaction ID:</span> {item.transactionId}{" "}
                     </h3>

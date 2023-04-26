@@ -29,11 +29,15 @@ const Edit = (props) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
     axios
-      .put("http://localhost:8080/api/user/updateUser", userData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .put(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/updateUser`,
+        userData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         router.push("/");
       })

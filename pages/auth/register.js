@@ -37,7 +37,7 @@ const Register = (props) => {
     const password = credentials.password;
 
     axios
-      .post(`http://localhost:8080/api/user/register`, {
+      .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/register`, {
         email,
         password,
       })

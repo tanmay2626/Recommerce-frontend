@@ -17,7 +17,7 @@ const Payment = ({ setIsSuccess }) => {
     const token = localStorage.getItem("token");
     axios
       .get(
-        `http://localhost:8080/api/payment/secret?amount=${
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/payment/secret?amount=${
           product.price * 100
         }`,
         {
@@ -51,7 +51,7 @@ const Payment = ({ setIsSuccess }) => {
         if (paymentIntent.status === "succeeded") {
           axios
             .post(
-              `http://localhost:8080/api/payment/create`,
+              `${process.env.NEXT_PUBLIC_SERVER_URL}/api/payment/create`,
               { successfulTransaction },
               {
                 headers: {

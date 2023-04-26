@@ -11,9 +11,7 @@ const Checkout = (props) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [{ product }] = useStateValue();
   const router = useRouter();
-  const stripePromise = loadStripe(
-    "pk_test_51L66RUSIG3JgLYVPrFgtrQTcFKRGKnfAygfS6ksaBhpwxzsOJkoB0jK762tFtoJogBvipvLbM9OF6SnJ1CTlx61O00axCujx2P"
-  );
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
