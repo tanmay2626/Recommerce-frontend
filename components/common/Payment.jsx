@@ -18,7 +18,7 @@ const Payment = ({ setIsSuccess }) => {
     axios
       .get(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/api/payment/secret?amount=${
-          product.price * 100
+          product?.price * 100
         }`,
         {
           headers: {
@@ -29,7 +29,7 @@ const Payment = ({ setIsSuccess }) => {
       .then((res) => {
         setClientSecret(res.data);
       });
-  }, [product.price]);
+  }, [product?.price]);
 
   const handlePayment = async () => {
     const token = localStorage.getItem("token");
