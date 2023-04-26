@@ -46,7 +46,7 @@ const Checkout = (props) => {
                   <td className={styles.summary_label}>{product?.title}</td>
                   <td>
                     ₹{" "}
-                    {product.price
+                    {product?.price
                       ?.toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   </td>
