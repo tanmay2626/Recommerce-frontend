@@ -13,9 +13,9 @@ const ProductCard = (props) => {
   return (
     <div className={styles.card}>
       <div className={styles.image_container}>
-        <img src={props.img} alt={props.title} />
+        <img src={props?.img} alt={props?.title} />
         <div className={styles.overlay}>
-          <div className={styles.name}>{handleEllipses(props.title)}</div>
+          <div className={styles.name}>{handleEllipses(props?.title)}</div>
           <div class={styles.price}>
             ₹ {props.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </div>

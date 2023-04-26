@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <script src="https://accounts.google.com/gsi/client"></script>
+        <script src="https://accounts.google.com/gsi/client" async></script>
       </Head>
       <Header />
       <main className={styles.main}>

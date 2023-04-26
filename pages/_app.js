@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <script src="https://accounts.google.com/gsi/client"></script>
+        <script src="https://accounts.google.com/gsi/client" async></script>
       </Head>
       <StateProvider initialState={initialState} reducer={reducer}>
         <Component {...pageProps} />
