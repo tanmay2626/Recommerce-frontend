@@ -43,7 +43,7 @@ const Checkout = (props) => {
             <table className={styles.product_table}>
               <tbody>
                 <tr>
-                  <td className={styles.summary_label}>{product.title}</td>
+                  <td className={styles.summary_label}>{product?.title}</td>
                   <td>
                     ₹{" "}
                     {product.price
@@ -59,7 +59,7 @@ const Checkout = (props) => {
                   <td className={styles.summary_label}>Total</td>
                   <td>
                     ₹{" "}
-                    {(product.price + 50)
+                    {(product?.price + 50)
                       ?.toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   </td>
