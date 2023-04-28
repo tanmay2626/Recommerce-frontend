@@ -88,7 +88,7 @@ const CreativeScrapyar = (props) => {
     <>
       <Header />
       <section className={styles.feeds_page}>
-       <Link to="/"> <p>Landing Page / Scrapyar</p></Link>
+       <Link href="/"> <p>Landing Page / Scrapyar</p></Link>
         <img src="/images/Creative Banner.png" alt="banner" />
         <div className={styles.feed_headline}>
           <div>
