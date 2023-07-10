@@ -139,6 +139,7 @@ const OnScrapYar = (props) => {
                 <option value="Mobile">Mobile</option>
                 <option value="Garden">Garden</option>
                 <option value="Sports">Sports</option>
+                <option value="Furniture">Furniture</option>
                 <option value="Electronic">Electronics</option>
                 <option value="Other">Other</option>
               </select>
