@@ -26,6 +26,7 @@ const Scrapyar = (props) => {
     "Electronic",
     "Garden",
     "Fashion",
+    "Furniture",
     "Sports",
     "Other",
   ];
